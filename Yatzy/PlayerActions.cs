@@ -107,7 +107,7 @@ namespace Yatzy
 
         public static int SetOnePair(Player player, List<string> savedDices)
         {
-
+            return 0;
         }
     }
 }
