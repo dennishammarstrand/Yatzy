@@ -17,7 +17,7 @@ namespace Yatzy
             var tempPlayers = new List<Player>();
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Console.WriteLine($"Enter player{i + 1} name: ");
+                Console.WriteLine($"Enter player {i + 1} name: ");
                 Player player = new Player
                 {
                     Name = Console.ReadLine(),

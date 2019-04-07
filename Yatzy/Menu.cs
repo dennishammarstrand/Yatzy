@@ -8,7 +8,7 @@ namespace Yatzy
     {
         public static void PrintGameBoard(List<Player> players, int currentTurn)
         {
-            Console.WriteLine($"                  {players[currentTurn].Name}'s turn");
+            Console.WriteLine($"                   {players[currentTurn].Name}'s turn");
             Console.WriteLine("--------------------Gameboard--------------------");
             Console.WriteLine($"Ones           |    {players[currentTurn].Board.Ones}");
             Console.WriteLine($"Twos           |    {players[currentTurn].Board.Twos}");
