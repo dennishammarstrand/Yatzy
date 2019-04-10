@@ -8,7 +8,7 @@ namespace Yatzy
     {
         public static List<Player> players;
         public static int currentTurn = 0;
-        public static List<string> savedDices;
+        public static List<int> savedDices;
         public static int dicesToThrow = 5;
 
         static void Main(string[] args)
@@ -29,7 +29,7 @@ namespace Yatzy
                     dicesToThrow -= savedDices.Count;
                     for (int i = 0; i < 2; i++)
                     {
-                        string[] thisTurnsSaved = Menu.ShowMultiMenu("Select what dices to save!", ThrowDices.Throw(dicesToThrow));
+                        int[] thisTurnsSaved = Menu.ShowMultiMenu("Select what dices to save!", ThrowDices.Throw(dicesToThrow));
                         if (thisTurnsSaved.Length != 0)
                         {
                             dicesToThrow -= thisTurnsSaved.Length;

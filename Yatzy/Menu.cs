@@ -84,7 +84,7 @@ namespace Yatzy
 
         // Show a menu like with ShowMenu, but allow the user to select multiple options by toggling them with Space.
         // All of the selected options will be returned as an array of strings once the user has pressed Enter.
-        public static string[] ShowMultiMenu(string prompt, string[] options)
+        public static int[] ShowMultiMenu(string prompt, string[] options)
         {
             Console.WriteLine(prompt);
 
@@ -154,10 +154,10 @@ namespace Yatzy
 
             // For consistency and predictability, sort selected indexes so that returned strings are in order shown in menu.
             selected.Sort();
-            var selectedStrings = new List<string>();
+            var selectedStrings = new List<int>();
             foreach (int i in selected)
             {
-                selectedStrings.Add(options[i]);
+                selectedStrings.Add(int.Parse(options[i]));
             }
             return selectedStrings.ToArray();
         }
