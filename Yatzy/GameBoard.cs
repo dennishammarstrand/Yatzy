@@ -23,7 +23,5 @@ namespace Yatzy
         public int Yatzy { get; set; }
         public int Bonus { get; set; }
         public int TotalScore { get; set; }
-
-              
     }
 }

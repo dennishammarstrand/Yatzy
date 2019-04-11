@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Yatzy
@@ -98,8 +99,12 @@ namespace Yatzy
                     player.Board.TotalScore += Straight(savedDices);
                     break;
                 case "FullHouse":
+                    player.Board.FullHouse = FullHouse(savedDices);
+                    player.Board.TotalScore += FullHouse(savedDices);
                     break;
                 case "Chance":
+                    player.Board.Chance = Chance(savedDices);
+                    player.Board.TotalScore += Chance(savedDices);
                     break;
                 case "Yatzy":
                     break;
@@ -151,7 +156,7 @@ namespace Yatzy
         }
         static int ThreeAndFourOfAKind(List<int> savedDices, int threeOrFour)
         {
-            int threeOfAKind = 0;
+            int result = 0;
             var count = new int[6];
 
             for (int i = 0; i < count.Length; i++)
@@ -169,10 +174,11 @@ namespace Yatzy
             {
                 if (count[i] >= threeOrFour)
                 {
-                    threeOfAKind += (i + 1) * threeOrFour;
+                    result += (i + 1) * threeOrFour;
+                    savedDices.RemoveAll(x => x == i + 1);
                 }
             }
-            return threeOfAKind;
+            return result;
         }
         static int Straight(List<int> savedDices)
         {
@@ -208,6 +214,24 @@ namespace Yatzy
             {
                 return 0;
             }
+        }
+
+        public static int FullHouse(List<int> savedDices)
+        {
+            int trueFullHouse = savedDices.Sum();
+            if (ThreeAndFourOfAKind(savedDices, 3) > 0 && SetOneOrTwoPair(savedDices, 1) > 0)
+            {
+                return trueFullHouse;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int Chance(List<int> savedDices)
+        {
+            return savedDices.Sum();
         }
     }
 }
